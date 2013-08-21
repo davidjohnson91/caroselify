@@ -1,4 +1,5 @@
 (function($){
+  //a quiet change
   $.fn.carouselify = function(options){
     var Carouselify = function(element, options){
       var addLeftLink = function(){
