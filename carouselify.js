@@ -1,12 +1,11 @@
 (function($){
-  //a quiet change
   $.fn.carouselify = function(options){
     var Carouselify = function(element, options){
-      var addLeftLink = function(){
+      this.addLeftLink = function(){
         return $('<span class="icon arrow-left notext navigation-link left disabled">Left</a>').appendTo(element);
       }
 
-      var addRightLink = function(){
+      this.addRightLink = function(){
         return $('<span class="icon arrow-right notext navigation-link right disabled">Right</a>').appendTo(element);
       }
 
@@ -32,11 +31,11 @@
         stopOnHover: false
       }, options || {});
 
-      isFirstSlide = function(){
+      var isFirstSlide = function(){
         return active <= 1;
       }
 
-      isLastSlide = function(){
+      var isLastSlide = function(){
         return active >= items.length;
       }
 
@@ -131,7 +130,6 @@
       };
 
       var init = function(){
-
         if(options.thumbnails){
           thumbnails = obj.addThumbnails();
           thumbnails.click(function(e){
@@ -149,8 +147,8 @@
         }
 
         if(options.navigationArrows){
-          leftLink  = addLeftLink();
-          rightLink = addRightLink();
+          leftLink  = obj.addLeftLink();
+          rightLink = obj.addRightLink();
           obj.setArrowVisibility();
           leftLink.click(function(){
             obj.stopRotation();
